@@ -49,6 +49,26 @@
       "quote": "yay",
       "author": "maura",
       "id": 13
+    },
+    {
+      "quote": "test",
+      "author": "unknown",
+      "id": 14
+    },
+    {
+      "quote": "test",
+      "author": "unknown",
+      "id": 15
+    },
+    {
+      "quote": "test",
+      "author": "unknown",
+      "id": 16
+    },
+    {
+      "quote": "test II",
+      "author": "me",
+      "id": 17
     }
   ],
   "likes": [
@@ -115,6 +135,30 @@
     {
       "quoteId": 11,
       "id": 16
+    },
+    {
+      "quoteId": 17,
+      "id": 17
+    },
+    {
+      "quoteId": 16,
+      "id": 18
+    },
+    {
+      "quoteId": 16,
+      "id": 19
+    },
+    {
+      "quoteId": 16,
+      "id": 20
+    },
+    {
+      "quoteId": 4,
+      "id": 21
+    },
+    {
+      "quoteId": 5,
+      "id": 22
     }
   ]
 }

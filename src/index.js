@@ -12,12 +12,13 @@ function getQuotes(){
 
 // iterating through Quotes
 function showQuotes(quotes){
+    quoteList.innerHTML= "" //added here to avoid error when toggling button
     quotes.forEach(quote => {
         quoteCard(quote)
     })
 }
 
-// was inside quoteCard, but need global scope to access in sortBtn
+// was inside quoteCard, but need global scope to access in sortBtn/showQuotes
 const quoteList = document.querySelector("ul#quote-list")
 
 // create/append single quote card
@@ -44,28 +45,34 @@ function quoteCard(quote){
    
    // goes inside likeBtn
    const span = ce("span")
-    if (quote.likes){
-        span.innerText = quote.likes.length
-    } 
-    else {
-       span.innerText = 0
-    }
+   span.innerText = quote.likes.length
+    // longer syntax, but now need to add quote.likes =[] in form fetch request bc form doesn't have like input field to create the key
+    // if (quote.likes){
+    //     span.innerText = quote.likes.length
+    // } 
+    // else {
+    //    span.innerText = 0
+    // }
 
     // functionality for likeBtn
     likeBtn.addEventListener("click", () => {
+        // post request is creating new likes in server
         fetch("http://localhost:3000/likes", {
-            method: "POST",
+            method: "POST", //post bc creating a new like instance for that post, not updating a previous like
             headers: {
                 "Content-Type":"application/json"
             },
             body: JSON.stringify ({
-                "quoteId": quote.id //using ID of current arg as quoteId for like
+                quoteId: quote.id //using ID of current arg as quoteId for like
             })
         })
+        //.then updates button number
         .then(() => {
             let postLikes = parseInt(span.innerText)
             span.innerText = ++postLikes //++ needs to be before postLikes for it to work without having to refresh... not sure why tho
         })
+        //.then(() => span.innerText = ++quote.likes.length)
+            // alternate syntax
     })
 
    const deleteBtn = ce("button")
@@ -97,18 +104,28 @@ form.addEventListener("submit", (event) => {
         method: "POST",
         headers: {
             "Content-Type":"application/json",
-            "Accept":"application/json"
+            // "Accept":"application/json"
         },
         body: JSON.stringify({
-            "quote": event.target[0].value,
-            "author": event.target[1].value
+            quote: event.target[0].value,
+            author: event.target[1].value
+            // could also write as:
+                // quote: form[0].value,
+                // author: form[1].value
+            // because we already have a const qs that finds the form called "form"
         })
     })
     .then (res => res.json())
+     // pessimistic rendering
     .then(quote => {
+        quote.likes = []
         quoteCard(quote)
         form.reset()
     })
+
+    // optimistic rendering
+        // possibility that rendering might happen before new quote is inserted bc not waiting for fetch request ot happen before calling the below func
+    //.then(quote => getQuotes())
 })
 
 // sortBtn
@@ -121,13 +138,19 @@ const h1 = document.querySelector("h1")
 h1.append(sortBtn)
 
 sortBtn.addEventListener("click", () => {
+    sortByAuthor()
+})
+
+// helper method for sortBtn eventListener
+function sortByAuthor(){
     // need to reset what the page is already displaying when clicked
     quoteList.innerHTML= ""
 
     fetch("http://localhost:3000/quotes?_embed=likes&&_sort=author")
     .then(res => res.json())
     .then(quotes => showQuotes(quotes))
-})
+
+}
 
 // call function to fetch and display from server
 getQuotes()

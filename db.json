@@ -1,21 +1,6 @@
 {
   "quotes": [
     {
-      "id": 1,
-      "quote": "The here and now is all we have, and if we play it right it's all we'll need.",
-      "author": "Ann Richards"
-    },
-    {
-      "id": 2,
-      "quote": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure.",
-      "author": "Collin Powell"
-    },
-    {
-      "id": 3,
-      "quote": "Don't count the days, make the days count.",
-      "author": "Mike Tyson"
-    },
-    {
       "id": 4,
       "quote": "You gain strength, courage and confidence by every experience in which you really stop to look fear in the face. You are able to say to yourself, 'I have lived through this horror. I can take the next thing that comes along.' You must do the thing you think you cannot do.",
       "author": "Eleanor Roosevelt"
@@ -51,15 +36,85 @@
       "author": "Sonia Sotomayor"
     },
     {
-      "quoteId": 2,
+      "quote": "This is my quote",
+      "author": "Maura Kelly",
       "id": 11
+    },
+    {
+      "quote": "cool quote",
+      "author": "anon",
+      "id": 12
+    },
+    {
+      "quote": "yay",
+      "author": "maura",
+      "id": 13
     }
   ],
   "likes": [
     {
-      "id": 1,
-      "quoteId": 1,
-      "createdAt": 1558524356
+      "quoteID": 4,
+      "id": 1
+    },
+    {
+      "quoteID": 4,
+      "id": 2
+    },
+    {
+      "quoteId": 4,
+      "id": 3
+    },
+    {
+      "quoteId": 5,
+      "id": 4
+    },
+    {
+      "quoteId": 6,
+      "id": 5
+    },
+    {
+      "quoteId": 4,
+      "id": 6
+    },
+    {
+      "quoteId": 7,
+      "id": 7
+    },
+    {
+      "quoteId": 8,
+      "id": 8
+    },
+    {
+      "quoteId": 4,
+      "id": 9
+    },
+    {
+      "quoteId": 6,
+      "id": 10
+    },
+    {
+      "quoteId": 4,
+      "id": 11
+    },
+    {
+      "quoteId": 5,
+      "id": 12
+    },
+    {
+      "quoteId": 6,
+      "id": 13
+    },
+    {
+      "quoteId": 11,
+      "id": 14
+    },
+    {
+      "quoteId": 13,
+      "id": 15
+    },
+    {
+      "quoteId": 11,
+      "id": 16
     }
   ]
 }
